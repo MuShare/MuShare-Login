@@ -18,11 +18,7 @@ public class RegisterManager extends BaseManager {
     public OperationResponse registerByEmail(RegisterEmailRequest registerEmailRequest, String sdkSecret) {
         App app = appDao.getBySdkSecret(sdkSecret);
         if (app == null) {
-            return OperationResponse.builder()
-                    .succeed(false)
-                    .code(2001)
-                    .message("App secret key error")
-                    .build();
+            return OperationResponse.errorSecretKey();
         }
         long now = System.currentTimeMillis();
         try {

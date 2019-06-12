@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Data
 @Builder
@@ -14,7 +15,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Entity
 @Table(name = "mushare_person")
-public class Email {
+public class Email implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
