@@ -1,4 +1,4 @@
-package org.mushare.login.Dao;
+package org.mushare.login.dao;
 
 import org.mushare.login.domain.Person;
 import org.springframework.data.jpa.repository.JpaRepository;
