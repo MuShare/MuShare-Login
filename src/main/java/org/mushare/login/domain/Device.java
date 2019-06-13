@@ -13,7 +13,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "mushare_person")
+@Table(name = "login_device")
 public class Device implements Serializable {
 
     @Id
@@ -45,7 +45,7 @@ public class Device implements Serializable {
     private String language;
 
     @ManyToOne
-    @Column(nullable = false, name = "user_id")
+    @JoinColumn(nullable = false, name = "user_id")
     private User user;
 
 }

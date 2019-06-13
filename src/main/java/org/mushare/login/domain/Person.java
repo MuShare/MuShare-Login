@@ -14,7 +14,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "mushare_person")
+@Table(name = "login_person")
 public class Person implements Serializable {
 
     @Id
