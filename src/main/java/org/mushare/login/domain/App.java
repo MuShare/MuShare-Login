@@ -36,4 +36,7 @@ public class App implements Serializable {
     @Column(nullable = false)
     private String sdkSecret;
 
+    @Column(nullable = false)
+    private String apiSecret;
+
 }

@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -15,7 +14,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @Entity
 @Table(name = "mushare_person")
-public class Person implements Serializable {
+public class Device implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,23 +27,25 @@ public class Person implements Serializable {
     private Long updatedAt;
 
     @Column(nullable = false)
-    private Long rev;
+    private String identifier;
 
     @Column(nullable = false)
-    private String name;
+    private String accessToken;
 
-    @Column
-    private Boolean sex;
+    @Column(nullable = false, columnDefinition = "TINYINT")
+    private Integer os;
 
-    @Column
-    private String birthday;
+    @Column(nullable = false)
+    private String version;
 
-    @OneToOne
-    @JoinColumn(name = "email_id")
-    private Email email;
+    @Column(nullable = false)
+    private String ip;
 
-    @OneToOne
-    @JoinColumn(name = "facebook_id")
-    private Facebook facebook;
+    @Column(nullable = false)
+    private String language;
+
+    @ManyToOne
+    @Column(nullable = false, name = "user_id")
+    private User user;
 
 }

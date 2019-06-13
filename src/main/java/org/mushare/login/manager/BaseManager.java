@@ -20,4 +20,7 @@ public class BaseManager {
     @Autowired
     protected PersonDao personDao;
 
+    @Autowired
+    protected DeviceDao deviceDao;
+
 }
