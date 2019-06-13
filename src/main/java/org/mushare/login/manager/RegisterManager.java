@@ -4,44 +4,42 @@ import lombok.extern.slf4j.Slf4j;
 import org.mushare.login.domain.App;
 import org.mushare.login.domain.Email;
 import org.mushare.login.domain.Person;
-import org.mushare.login.spec.request.RegisterEmailRequest;
-import org.mushare.login.spec.response.OperationResponse;
+import org.mushare.login.manager.common.BaseManager;
+import org.mushare.login.manager.common.Result;
+import org.mushare.login.manager.common.ResultCode;
 import org.springframework.stereotype.Service;
-
-import javax.transaction.Transactional;
 
 @Service
 @Slf4j
-@Transactional
 public class RegisterManager extends BaseManager {
 
-    public OperationResponse registerByEmail(RegisterEmailRequest registerEmailRequest, String sdkSecret) {
+    public Result registerByEmail(String address, String password, String name, String sdkSecret) {
         App app = appDao.getBySdkSecret(sdkSecret);
         if (app == null) {
-            return OperationResponse.errorSecretKey();
+            return ResultCode.SdkSecrectError.result();
+        }
+        Email email = emailDao.getByAddress(address);
+        if (email != null) {
+            return ResultCode.EmailExist.result();
         }
         long now = System.currentTimeMillis();
-        try {
-            Email email = Email.builder()
-                    .createdAt(now)
-                    .updatedAt(now)
-                    .address(registerEmailRequest.getEmail())
-                    .password(registerEmailRequest.getPassword())
-                    .build();
-            emailDao.save(email);
-            Person person = Person.builder()
-                    .createdAt(now)
-                    .updatedAt(now)
-                    .email(email)
-                    .name(registerEmailRequest.getName())
-                    .build();
-            personDao.save(person);
-        } catch (Exception e) {
-            log.error("create user error", e);
-            return OperationResponse.success();
-        }
+        email = Email.builder()
+                .createdAt(now)
+                .updatedAt(now)
+                .address(address)
+                .password(password)
+                .build();
+        emailDao.save(email);
+        Person person = Person.builder()
+                .createdAt(now)
+                .updatedAt(now)
+                .email(email)
+                .name(name)
+                .rev(0L)
+                .build();
+        personDao.save(person);
 
-        return OperationResponse.success();
+        return Result.success();
     }
 
 }

@@ -1,4 +1,4 @@
-package org.mushare.login.controller;
+package org.mushare.login.controller.common;
 
 import org.mushare.login.manager.RegisterManager;
 import org.springframework.beans.factory.annotation.Autowired;

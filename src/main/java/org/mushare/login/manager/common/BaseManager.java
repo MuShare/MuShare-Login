@@ -1,4 +1,4 @@
-package org.mushare.login.manager;
+package org.mushare.login.manager.common;
 
 import org.mushare.login.dao.*;
 import org.springframework.beans.factory.annotation.Autowired;
