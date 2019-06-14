@@ -23,8 +23,7 @@ public class RegisterSDKController extends BaseController {
                                           @RequestParam String name, HttpServletRequest request) {
         Result result = registerManager.registerByEmail(address, password, name, sdkSecret(request));
         if (result.hasError()) {
-            return result.errorMapping(ImmutableMap.of(
-                    ResultCode.SdkSecrectError, ErrorCode.ErrorSdkSecret,
+            return result.errorMapping(sdkSecretErrorMap, ImmutableMap.of(
                     ResultCode.EmailExist, ErrorCode.ErrorEmailExist
             ));
         }

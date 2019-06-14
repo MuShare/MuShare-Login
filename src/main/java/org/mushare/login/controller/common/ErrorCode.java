@@ -10,9 +10,10 @@ public enum ErrorCode {
 
     ErrorSdkSecret(2001, "Sdk secret error!"),
     ErrorEmailExist(2011, "This email has been registered."),
-    ErrorIllegalIDeviceOS(2021, "Device OS should be iOS or Android."),
+    ErrorIllegalIDeviceOS(2021, "Device OS identifier should be web, iOs or android."),
     ErrorEmailNotExist(2022, "This email is not exsit."),
-    ErrorPasswordWrong(2023, "Password is wrong.");
+    ErrorPersonNotFound(2023, "Person not found with this email."),
+    ErrorPasswordWrong(2024, "Password is wrong.");
 
     public int code;
     public String message;

@@ -9,7 +9,10 @@ public enum ResultCode {
 
     SdkSecrectError(2001),
     EmailExist(2002),
-    EmailNotExist(2003);
+    EmailNotExist(2003),
+    PasswordError(2004),
+    UnknownOS(2005),
+    PersonNotExsit(2006);
 
     public int code;
 
