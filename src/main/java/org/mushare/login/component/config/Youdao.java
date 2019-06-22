@@ -1,7 +1,8 @@
 package org.mushare.login.component.config;
 
-import org.mushare.easyjapanese.component.config.common.ConfigUnit;
-import org.mushare.easyjapanese.dao.ConfigDao;
+
+import org.mushare.login.component.config.common.ConfigUnit;
+import org.mushare.login.dao.ConfigDao;
 
 public class Youdao extends ConfigUnit {
 
